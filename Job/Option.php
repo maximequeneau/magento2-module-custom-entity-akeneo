@@ -36,14 +36,14 @@ class Option extends Import
     /**
      * Import name.
      */
-    protected string $name = 'Smile Custom Entity Attribute Option';
+    protected string $name = 'Smile custom entity attribute option';
 
     /**
      * Attribute types that have options.
      */
     protected array $attributeTypesWithOption = [
         'single_option',
-        'multiple_options'
+        'multiple_options',
     ];
 
     /**
@@ -51,7 +51,7 @@ class Option extends Import
      */
     protected array $referenceEntityAttributes = [
         'reference_entity_single_link',
-        'reference_entity_multiple_links'
+        'reference_entity_multiple_links',
     ];
 
     /**

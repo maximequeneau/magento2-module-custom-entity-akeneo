@@ -17,11 +17,18 @@ use Smile\CustomEntity\Api\Data\CustomEntityInterface;
  */
 class AttributePlugin
 {
+    protected Entities $entitiesHelper;
+    protected EavSetup $eavSetup;
+    protected Config $configHelper;
+
     public function __construct(
-        protected Entities $entitiesHelper,
-        protected EavSetup $eavSetup,
-        protected Config $configHelper
+        Entities $entitiesHelper,
+        EavSetup $eavSetup,
+        Config $configHelper
     ) {
+        $this->configHelper = $configHelper;
+        $this->eavSetup = $eavSetup;
+        $this->entitiesHelper = $entitiesHelper;
     }
 
     /**

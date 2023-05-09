@@ -13,8 +13,13 @@ use Akeneo\Connector\Job\Option;
  */
 class OptionPlugin
 {
-    public function __construct(protected Entities $entitiesHelper, protected Config $configHelper)
+    protected Entities $entitiesHelper;
+    protected Config $configHelper;
+
+    public function __construct(Entities $entitiesHelper, Config $configHelper)
     {
+        $this->configHelper = $configHelper;
+        $this->entitiesHelper = $entitiesHelper;
     }
 
     /**

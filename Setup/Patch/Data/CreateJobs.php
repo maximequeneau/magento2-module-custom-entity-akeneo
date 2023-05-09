@@ -21,11 +21,18 @@ use Smile\CustomEntityAkeneo\Job\Option;
  */
 class CreateJobs implements DataPatchInterface
 {
+    protected ModuleDataSetupInterface $moduleDataSetup;
+    protected JobRepository $jobRepository;
+    protected JobFactory $jobFactory;
+
     public function __construct(
-        protected ModuleDataSetupInterface $moduleDataSetup,
-        protected JobRepository $jobRepository,
-        protected JobFactory $jobFactory
+        ModuleDataSetupInterface $moduleDataSetup,
+        JobRepository $jobRepository,
+        JobFactory $jobFactory
     ) {
+        $this->jobFactory = $jobFactory;
+        $this->jobRepository = $jobRepository;
+        $this->moduleDataSetup = $moduleDataSetup;
     }
 
     /**

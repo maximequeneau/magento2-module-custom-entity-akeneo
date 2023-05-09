@@ -13,10 +13,15 @@ use Psr\Log\LoggerInterface as Logger;
  */
 class ReferenceEntities implements OptionSourceInterface
 {
+    protected Authenticator $akeneoAuthenticator;
+    protected Logger $logger;
+
     public function __construct(
-        protected Authenticator $akeneoAuthenticator,
-        protected Logger $logger
+        Authenticator $akeneoAuthenticator,
+        Logger $logger
     ) {
+        $this->logger = $logger;
+        $this->akeneoAuthenticator = $akeneoAuthenticator;
     }
 
     /**

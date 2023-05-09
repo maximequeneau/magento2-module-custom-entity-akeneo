@@ -14,11 +14,18 @@ use Smile\CustomEntityProductLink\Model\ResourceModel\CustomEntityProductLinkMan
  */
 class ProductPlugin
 {
+    protected Entities $entitiesHelper;
+    protected CustomEntityProductLinkManagement $customEntityProductLinkManagement;
+    protected Config $configHelper;
+
     public function __construct(
-        protected Entities $entitiesHelper,
-        protected CustomEntityProductLinkManagement $customEntityProductLinkManagement,
-        protected Config $configHelper
+        Entities $entitiesHelper,
+        CustomEntityProductLinkManagement $customEntityProductLinkManagement,
+        Config $configHelper
     ) {
+        $this->configHelper = $configHelper;
+        $this->customEntityProductLinkManagement = $customEntityProductLinkManagement;
+        $this->entitiesHelper = $entitiesHelper;
     }
 
     /**

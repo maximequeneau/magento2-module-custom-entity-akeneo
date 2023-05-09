@@ -56,6 +56,13 @@ class Attribute extends Import
         'image',
         'description',
     ];
+    protected ConfigManager $configManager;
+    protected TypeListInterface $cacheTypeList;
+    protected AttributeHelper $attributeHelper;
+    protected EavConfig $eavConfig;
+    protected StoreHelper $storeHelper;
+    protected EavSetup $eavSetup;
+    protected ReferenceEntity $referenceEntityHelper;
 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -66,15 +73,22 @@ class Attribute extends Import
         Authenticator $authenticator,
         Entities $entitiesHelper,
         AkeneoConfigHelper $configHelper,
-        protected TypeListInterface $cacheTypeList,
-        protected ConfigManager $configManager,
-        protected EavConfig $eavConfig,
-        protected AttributeHelper $attributeHelper,
-        protected StoreHelper $storeHelper,
-        protected EavSetup $eavSetup,
-        protected ReferenceEntity $referenceEntityHelper,
+        TypeListInterface $cacheTypeList,
+        ConfigManager $configManager,
+        EavConfig $eavConfig,
+        AttributeHelper $attributeHelper,
+        StoreHelper $storeHelper,
+        EavSetup $eavSetup,
+        ReferenceEntity $referenceEntityHelper,
         array $data = []
     ) {
+        $this->referenceEntityHelper = $referenceEntityHelper;
+        $this->eavSetup = $eavSetup;
+        $this->storeHelper = $storeHelper;
+        $this->eavConfig = $eavConfig;
+        $this->attributeHelper = $attributeHelper;
+        $this->cacheTypeList = $cacheTypeList;
+        $this->configManager = $configManager;
         parent::__construct(
             $outputHelper,
             $eventManager,

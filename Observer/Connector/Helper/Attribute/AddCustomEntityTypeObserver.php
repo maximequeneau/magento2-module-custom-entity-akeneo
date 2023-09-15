@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Smile\CustomEntityAkeneo\Observer\Connector\Helper\Attribute;
 
 use Akeneo\Connector\Helper\Config;
+use Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Smile\CustomEntityProductLink\Model\Entity\Attribute\Frontend\CustomEntity;
+use Smile\CustomEntityProductLink\Model\Entity\Attribute\Source\CustomEntity as Source;
 
 /**
  * Attribute import job observer.
@@ -32,10 +34,10 @@ class AddCustomEntityTypeObserver implements ObserverInterface
                 $types,
                 [
                     'smile_custom_entity' => [
-                        'backend_type' => 'static',
+                        'backend_type' => 'text',
                         'frontend_input' => 'smile_custom_entity',
-                        'backend_model' => null,
-                        'source_model' => null,
+                        'backend_model' => ArrayBackend::class,
+                        'source_model' => Source::class,
                         'frontend_model' => CustomEntity::class,
                     ],
                 ]

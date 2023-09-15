@@ -40,6 +40,11 @@ class CustomEntity extends Import
      * Import name.
      */
     protected string $name = 'Smile custom entity';
+    protected StoreHelper $storeHelper;
+    protected EavConfig $eavConfig;
+    protected SetFactory $attributeSetFactory;
+    protected TypeListInterface $cacheTypeList;
+    protected ConfigManager $configManager;
 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -50,13 +55,18 @@ class CustomEntity extends Import
         Authenticator $authenticator,
         Entities $entitiesHelper,
         ConfigHelper $configHelper,
-        protected StoreHelper $storeHelper,
-        protected EavConfig $eavConfig,
-        protected SetFactory $attributeSetFactory,
-        protected TypeListInterface $cacheTypeList,
-        protected ConfigManager $configManager,
+        StoreHelper $storeHelper,
+        EavConfig $eavConfig,
+        SetFactory $attributeSetFactory,
+        TypeListInterface $cacheTypeList,
+        ConfigManager $configManager,
         array $data = []
     ) {
+        $this->configManager = $configManager;
+        $this->cacheTypeList = $cacheTypeList;
+        $this->attributeSetFactory = $attributeSetFactory;
+        $this->eavConfig = $eavConfig;
+        $this->storeHelper = $storeHelper;
         parent::__construct(
             $outputHelper,
             $eventManager,

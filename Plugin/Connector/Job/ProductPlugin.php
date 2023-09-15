@@ -16,10 +16,15 @@ use Zend_Db_Expr as Expr;
  */
 class ProductPlugin
 {
+    protected Entities $entitiesHelper;
+    protected Config $configHelper;
+
     public function __construct(
-        protected Entities $entitiesHelper,
-        protected Config $configHelper
+        Entities $entitiesHelper,
+        Config $configHelper
     ) {
+        $this->configHelper = $configHelper;
+        $this->entitiesHelper = $entitiesHelper;
     }
 
     public function afterUpdateOption(Product $productJob): void

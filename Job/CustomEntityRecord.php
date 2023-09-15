@@ -58,6 +58,12 @@ class CustomEntityRecord extends Import
         'image' => 'image',
         'description' => 'description',
     ];
+    protected ConfigManager $configManager;
+    protected TypeListInterface $cacheTypeList;
+    protected StoreHelper $storeHelper;
+    protected ReferenceEntity $referenceEntityHelper;
+    protected AttributeTables $attributeTables;
+    protected FilterManager $filterManager;
 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -68,14 +74,20 @@ class CustomEntityRecord extends Import
         Authenticator $authenticator,
         Entities $entitiesHelper,
         Config $configHelper,
-        protected ConfigManager $configManager,
-        protected TypeListInterface $cacheTypeList,
-        protected StoreHelper $storeHelper,
-        protected ReferenceEntity $referenceEntityHelper,
-        protected AttributeTables $attributeTables,
-        protected FilterManager $filterManager,
+        ConfigManager $configManager,
+        TypeListInterface $cacheTypeList,
+        StoreHelper $storeHelper,
+        ReferenceEntity $referenceEntityHelper,
+        AttributeTables $attributeTables,
+        FilterManager $filterManager,
         array $data = []
     ) {
+        $this->filterManager = $filterManager;
+        $this->attributeTables = $attributeTables;
+        $this->referenceEntityHelper = $referenceEntityHelper;
+        $this->storeHelper = $storeHelper;
+        $this->cacheTypeList = $cacheTypeList;
+        $this->configManager = $configManager;
         parent::__construct(
             $outputHelper,
             $eventManager,

@@ -12,8 +12,11 @@ use Akeneo\Connector\Helper\ReferenceEntities;
  */
 class ReferenceEntitiesPlugin
 {
-    public function __construct(protected Config $configHelper)
+    protected Config $configHelper;
+
+    public function __construct(Config $configHelper)
     {
+        $this->configHelper = $configHelper;
     }
 
     /**

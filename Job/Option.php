@@ -53,6 +53,10 @@ class Option extends Import
         'reference_entity_single_link',
         'reference_entity_multiple_links',
     ];
+    protected ConfigManager $configManager;
+    protected TypeListInterface $cacheTypeList;
+    protected StoreHelper $storeHelper;
+    protected ReferenceEntity $referenceEntityHelper;
 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -63,12 +67,16 @@ class Option extends Import
         Authenticator $authenticator,
         Entities $entitiesHelper,
         AkeneoConfig $akeneoConfig,
-        protected ConfigManager $configManager,
-        protected TypeListInterface $cacheTypeList,
-        protected StoreHelper $storeHelper,
-        protected ReferenceEntity $referenceEntityHelper,
+        ConfigManager $configManager,
+        TypeListInterface $cacheTypeList,
+        StoreHelper $storeHelper,
+        ReferenceEntity $referenceEntityHelper,
         array $data = []
     ) {
+        $this->referenceEntityHelper = $referenceEntityHelper;
+        $this->storeHelper = $storeHelper;
+        $this->cacheTypeList = $cacheTypeList;
+        $this->configManager = $configManager;
         parent::__construct(
             $outputHelper,
             $eventManager,

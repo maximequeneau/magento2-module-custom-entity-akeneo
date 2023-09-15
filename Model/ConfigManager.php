@@ -20,9 +20,11 @@ class ConfigManager
     public const CACHE_TYPE_CUSTOM_ENTITY = 'akeneo_connector/cache/smile_custom_entity';
     public const CACHE_TYPE_CUSTOM_ENTITY_ATTRIBUTE = 'akeneo_connector/cache/smile_custom_entity_attribute';
     public const CACHE_TYPE_CUSTOM_ENTITY_RECORD = 'akeneo_connector/cache/smile_custom_entity_record';
+    protected ScopeConfigInterface $scopeConfig;
 
-    public function __construct(protected ScopeConfigInterface $scopeConfig)
+    public function __construct(ScopeConfigInterface $scopeConfig)
     {
+        $this->scopeConfig = $scopeConfig;
     }
 
     /**

@@ -17,8 +17,11 @@ use Smile\CustomEntityProductLink\Model\Entity\Attribute\Source\CustomEntity as 
  */
 class AddCustomEntityTypeObserver implements ObserverInterface
 {
-    public function __construct(protected Config $configHelper)
+    protected Config $configHelper;
+
+    public function __construct(Config $configHelper)
     {
+        $this->configHelper = $configHelper;
     }
 
     /**

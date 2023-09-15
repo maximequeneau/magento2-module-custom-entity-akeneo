@@ -21,6 +21,8 @@ use Zend_Db_Statement_Exception;
  */
 class ReferenceEntity extends Entities
 {
+    protected ConfigManager $configManager;
+
     public function __construct(
         ResourceConnection $connection,
         DeploymentConfig $deploymentConfig,
@@ -28,8 +30,9 @@ class ReferenceEntity extends Entities
         ConfigHelper $configHelper,
         LoggerInterface $logger,
         Authenticator $authenticator,
-        protected ConfigManager $configManager
+        ConfigManager $configManager
     ) {
+        $this->configManager = $configManager;
         parent::__construct(
             $connection,
             $deploymentConfig,
@@ -66,7 +69,7 @@ class ReferenceEntity extends Entities
     /**
      * @inheritdoc
      */
-    public function getAttribute($code, $entityTypeId): bool|array
+    public function getAttribute($code, $entityTypeId)
     {
         $connection = $this->connection;
 
